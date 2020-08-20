@@ -8,22 +8,12 @@ public static class Conversores
 {
     public static string NumeroALetras(this decimal numberAsString)
     {
-        string dec;
-
         var entero = Convert.ToInt64(Math.Truncate(numberAsString));
         var decimales = Convert.ToInt32(Math.Round((numberAsString - entero) * 100, 2));
-        if (decimales > 0)
-        {
-            //dec = " PESOS CON " + decimales.ToString() + "/100";
-            dec = $" PESOS {decimales:0,0} /100";
-        }
-        //Código agregado por mí
-        else
-        {
-            //dec = " PESOS CON " + decimales.ToString() + "/100";
-            dec = $" PESOS {decimales:0,0} /100";
-        }
-        var res = NumeroALetras(Convert.ToDouble(entero)) + dec;
+        var res = NumeroALetras(Convert.ToDouble(entero));
+        //if (entero < 0 && decimales < 0)
+            //res = "MENOS" + NumeroALetras(Convert.ToDouble(-entero));
+        
         return res;
     }
     [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
